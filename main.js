@@ -1,4 +1,5 @@
 var Word = require('./word.js');
+var letter = require('./letter.js');
 var prompt = require('prompt');
 console.log("---------------------------------------------------");
 console.log("---------------------------------------------------");
@@ -35,11 +36,11 @@ game = {
  			var manyGuessed = self.currentWord.checkLetter(result.guessLet);
 
  			if(manyGuessed ==0) {
- 				console.log("WRONG");
+ 				console.log("WRONG, Try Again");
  				self.guessesRemaining--;
  				
  			} else {
- 				console.log("CORRECT");
+ 				console.log("CORRECT, Good Job");
  					if(self.currentWord.findWord()){
  						console.log("You won!");
  						console.log("-------------------");
@@ -53,7 +54,7 @@ game = {
  				self.promptUser();
  			}
  			else if(self.guessesRemaining ==0){
- 				console.log("Game over. Correct Word ", self.currentWord.target);
+ 				console.log("Game over. Correct Word was...", self.currentWord.target);
  			} else {
  				console.log(self.currentWord.wordRender());
  			}
