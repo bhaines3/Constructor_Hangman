@@ -37,11 +37,11 @@ game = {
  			var manyGuessed = self.currentWord.checkLetter(result.guessLet);
 
  			if(manyGuessed ==0) {
- 				console.log("WRONG, Try Again");
+ 				console.log("WRONG!, Try Again...");
  				self.guessesRemaining--;
  				
  			} else {
- 				console.log("CORRECT, Good Job");
+ 				console.log("CORRECT!, Good Job!");
  					if(self.currentWord.findWord()){
  						console.log("You won!");
  						console.log("-------------------");
