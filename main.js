@@ -1,4 +1,5 @@
 var Word = require('./word.js');
+var game = require('./game.js');
 var letter = require('./letter.js');
 var prompt = require('prompt');
 console.log("---------------------------------------------------");
@@ -18,7 +19,7 @@ game = {
  	guessesRemaining: 10,
  	currentWord: null,
  	
- 	startGame: function (wrd) {
+ 	startGame: function (word) {
  		this.resetGuesses();
  		this.currentWord = new Word(this.wordBank[Math.floor(Math.random()* this.wordBank.length)]);
  		this.currentWord.getLet();
