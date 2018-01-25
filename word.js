@@ -4,7 +4,7 @@ function Word(target) {
 	this.target = target;
 	this.letterFound = [];
 	this.underscores = []
-	this.found = false;//note
+	this.found = false;
 
 	this.getLet = function() {
 		for (var i=0; i < this.target.length; i++) {

@@ -11,7 +11,7 @@ console.log("---------------------------------------------------");
 console.log("---------------------------------------------------");
 prompt.start();
 
-var wordBank = ["Kylo Ren", "Darth Vader", "Obi Wan Kinobi", "Luke", "Darth Maul", "Jango Fett", "Jabba the Hut", "Padme", "Han Solo", "Chewbacca", "Mace Windu", "Yoda", "Ewoks", "Darth Sideous", "General Grievous", "Leia", "Greedo", "Jar Jar Binks", "Rey", "Anakin"]
+var wordBank = ["kylo ren", "darth vader", "obi wan kinobi", "luke", "darth maul", "jango fett", "jabba the hut", "padme", "han solo", "chewbacca", "mace windu", "yoda", "ewoks", "darth sideous", "general grievous", "leia", "greedo", "jar jar binks", "rey", "anakin"]
 var wordsGuessed = 0;
 var guessesRemaining = 10;
 var currentWord = null;
