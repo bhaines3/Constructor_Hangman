@@ -11,59 +11,52 @@ console.log("---------------------------------------------------");
 console.log("---------------------------------------------------");
 prompt.start();
 
+var wordBank = ["Kylo Ren", "Darth Vader", "Obi Wan Kinobi", "Luke", "Darth Maul", "Jango Fett", "Jabba the Hut", "Padme", "Han Solo", "Chewbacca", "Mace Windu", "Yoda", "Ewoks", "Darth Sideous", "General Grievous", "Leia", "Greedo", "Jar Jar Binks", "Rey", "Anakin"]
+var wordsGuessed = 0;
+var guessesRemaining = 10;
+var currentWord = null;
 
+function startGame (word) {
+	resetGuesses();
+	currentWord = new Word(wordBank[Math.floor(Math.random() * wordBank.length)]);
+	currentWord.getLet();
+	promptUser();
+}
 
-game = {
-    wordBank: ["Kylo Ren", "Darth Vader", "Obi Wan Kinobi", "Luke", "Darth Maul", "Jango Fett", "Jabba the Hut", "Padme", "Han Solo", "Chewbacca", "Mace Windu", "Yoda", "Ewoks", "Darth Sideous", "General Grievous", "Leia", "Greedo", "Jar Jar Binks", "Rey", "Anakin"],
- 	wordsGuessed: 0,
- 	guessesRemaining: 10,
- 	currentWord: null,
- 	
- 	startGame: function (word) {
- 		this.resetGuesses();
- 		this.currentWord = new Word(this.wordBank[Math.floor(Math.random()* this.wordBank.length)]);
- 		this.currentWord.getLet();
- 		this.promptUser();
- 	},
+function resetGuesses (){
+ 		guessesRemaining = 10;
+};
 
- 	resetGuesses: function(){
- 		this.guessesRemaining = 10;
- 	},
-
- 	promptUser: function(){
- 		var self = this;
+function promptUser(){
  		prompt.get(['guessLet'], function(err, result){
  			console.log("You guessed: " + result.guessLet);
- 			var manyGuessed = self.currentWord.checkLetter(result.guessLet);
+ 			var manyGuessed = currentWord.checkLetter(result.guessLet);
 
- 			if(manyGuessed ==0) {
+ 			if(manyGuessed == 0) {
  				console.log("WRONG!, Try Again...");
- 				self.guessesRemaining--;
+ 				guessesRemaining--;
  				
  			} else {
  				console.log("CORRECT!, Good Job!");
- 					if(self.currentWord.findWord()){
+ 					if(currentWord.findWord()){
  						console.log("You won!");
  						console.log("-------------------");
  						return;
  					}
  			}
 
- 			console.log("Guesses remaining: " + self.guessesRemaining);
+ 			console.log("Guesses remaining: " + guessesRemaining);
  			console.log("-------------------");
- 			if((self.guessesRemaining > 0) && (self.currentWord.found == false)){
- 				self.promptUser();
+ 			if((guessesRemaining > 0) && (currentWord.found == false)){
+ 				promptUser();
  			}
- 			else if(self.guessesRemaining ==0){
- 				console.log("Game over. Correct Word was...", self.currentWord.target);
+ 			else if(guessesRemaining == 0){
+ 				console.log("Game over. Correct Word was...", currentWord.target);
  			} else {
- 				console.log(self.currentWord.wordRender());
+ 				console.log(currentWord.wordRender());
  			}
  		});
 
  	}
 
-
-};
-
-game.startGame();
+startGame();
